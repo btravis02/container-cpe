@@ -224,7 +224,7 @@ These optional variables can be set on your Docker container. You can pass these
   </tr>
   </table>
 
-For monitoring environment variables, check [ECM Monitoring Github](https://github.ibm.com/ecm-container-service/ecm-container-monitoring#environment-variables).
+For monitoring environment variables, check [ECM Monitoring Github](https://github.com/ibm-ecm/container-monitoring).
 
 ## 3. Run the container in the Docker environment
 
