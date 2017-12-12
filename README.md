@@ -253,7 +253,7 @@ docker run -d -e MON_METRICS_WRITER_OPTION=2 -e MON_METRICS_SERVICE_ENDPOINT=met
 
 Refer to [kubernetes document](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) for information on persistence volume preparation.
 
-2. Create a persistence volume claim ([sample YAML file for create PVC](https://github.com/ibm-ecm/container-cpe/blob/master/examples/ecmcfgstore.yaml)):
+2. Create a persistence volume claim ([sample YAML file for create PVC](https://github.com/ibm-ecm/container-cpe/blob/master/examples/ecmcfgstore.yaml%20)):
 ```
 kubectl apply ecmcfgstore.yml
 ```
