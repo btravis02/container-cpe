@@ -33,7 +33,7 @@ Before you can use the Content Platform Engine container, you must create the GC
 Use the following information to create the GCD database: [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSNW2F_5.5.0/com.ibm.p8.planprepare.doc/p8ppi258.htm)
 
 #### 1.2 Create the Object Store database.
-Create object store database based on [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSNW2F_5.2.1/com.ibm.p8.planprepare.doc/p8ppi168.htm)
+Create object store database based on [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSNW2F_5.5.0/com.ibm.p8.planprepare.doc/p8ppi168.htm)
 
 ## 2. Create the container configuration.
 
