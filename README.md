@@ -180,7 +180,7 @@ Validate your files:
 
 Use the following Docker commands with your credentials to log in and pull the Docker image:
 - ```docker login -u mydockerid -p mydockerpw```
-- ```docker pull ibmcorp/ecm_earlyadopters_cpe:earlyadopters-gm5.5```
+- ```docker pull ecmcontainers/ecm_earlyadopters_cpe:earlyadopters-gm5.5```
 
 ## 2. Set the environment variables (optional)
 These optional variables can be set on your Docker container. You can pass these to the container when you run the image by using additional ```-e FLAG=value``` arguments.
@@ -232,7 +232,7 @@ A Linux host or virtual machine with Docker engine installed is needed to run th
 The following command, which uses sample values, runs the Content Platform Engine container:  
 
 ```
-docker run -d --name cpe -p 9080:9080 -p 9443:9443 --hostname=hikes1 -v /home/cpe_data/asa:/opt/ibm/asa -v /tmp/data/textext:/opt/ibm/textext -v /home/cpe_data/icmrules:/opt/ibm/icmrules -v /home/cpe_data/logs:/opt/ibm/wlp/usr/servers/defaultServer/logs -v /home/cpe_data/FileNet:/opt/ibm/wlp/usr/servers/defaultServer/FileNet -v /home/cpe_data/configDropins/overrides:/opt/ibm/wlp/usr/servers/defaultServer/configDropins/overrides -v /home/cpe_data/bootstrap:/opt/ibm/wlp/usr/servers/defaultServer/lib/bootstrap ecm-containerization-docker-local.artifactory.swg-devops.com/cpe:stable
+docker run -d --name cpe -p 9080:9080 -p 9443:9443 --hostname=hikes1 -v /home/cpe_data/asa:/opt/ibm/asa -v /tmp/data/textext:/opt/ibm/textext -v /home/cpe_data/icmrules:/opt/ibm/icmrules -v /home/cpe_data/logs:/opt/ibm/wlp/usr/servers/defaultServer/logs -v /home/cpe_data/FileNet:/opt/ibm/wlp/usr/servers/defaultServer/FileNet -v /home/cpe_data/configDropins/overrides:/opt/ibm/wlp/usr/servers/defaultServer/configDropins/overrides -v /home/cpe_data/bootstrap:/opt/ibm/wlp/usr/servers/defaultServer/lib/bootstrap ecmcontainers/ecm_earlyadopters_cpe:earlyadopters-gm5.5
 ```
 
 Verify the Content Platform Engine deployment http://your-host-ip:9080/cpe or https://your-host-ip:9443/cpe 
@@ -244,7 +244,7 @@ Verify the Content Platform Engine deployment http://your-host-ip:9080/cpe or ht
 Connect to Bluemix metrics service by using IBM Cloud monitoring metrics writer for space or organization scope and connect to Bluemix logging service using Bluemix multi-tenant lumberjack writer:
 
 ```
-docker run -d -e MON_METRICS_WRITER_OPTION=2 -e MON_METRICS_SERVICE_ENDPOINT=metrics.ng.bluemix.net:9095 -e MON_BMX_GROUP=com.ibm.ecm.monitor. -e MON_BMX_METRICS_SCOPE_ID={space or organization guid} -e MON_BMX_API_KEY={IAM API key} -e MON_LOG_SHIPPER_OPTION=2 -e MON_BMX_SPACE_ID={tenant id} -e MON_LOG_SERVICE_ENDPOINT=logs.opvis.bluemix.net:9091 -e MON_BMX_LOGS_LOGGING_TOKEN={log logging token} --name cpe -p 9080:9080 -p 9443:9443 --hostname=hikes1 -v /home/cpe_data/asa:/opt/ibm/asa -v /tmp/data/textext:/opt/ibm/textext -v /home/cpe_data/icmrules:/opt/ibm/icmrules -v /home/cpe_data/logs:/opt/ibm/wlp/usr/servers/defaultServer/logs -v /home/cpe_data/FileNet:/opt/ibm/wlp/usr/servers/defaultServer/FileNet -v /home/cpe_data/configDropins/overrides:/opt/ibm/wlp/usr/servers/defaultServer/configDropins/overrides -v /home/cpe_data/bootstrap:/opt/ibm/wlp/usr/servers/defaultServer/lib/bootstrap ecm-containerization-docker-local.artifactory.swg-devops.com/cpe:stable
+docker run -d -e MON_METRICS_WRITER_OPTION=2 -e MON_METRICS_SERVICE_ENDPOINT=metrics.ng.bluemix.net:9095 -e MON_BMX_GROUP=com.ibm.ecm.monitor. -e MON_BMX_METRICS_SCOPE_ID={space or organization guid} -e MON_BMX_API_KEY={IAM API key} -e MON_LOG_SHIPPER_OPTION=2 -e MON_BMX_SPACE_ID={tenant id} -e MON_LOG_SERVICE_ENDPOINT=logs.opvis.bluemix.net:9091 -e MON_BMX_LOGS_LOGGING_TOKEN={log logging token} --name cpe -p 9080:9080 -p 9443:9443 --hostname=hikes1 -v /home/cpe_data/asa:/opt/ibm/asa -v /tmp/data/textext:/opt/ibm/textext -v /home/cpe_data/icmrules:/opt/ibm/icmrules -v /home/cpe_data/logs:/opt/ibm/wlp/usr/servers/defaultServer/logs -v /home/cpe_data/FileNet:/opt/ibm/wlp/usr/servers/defaultServer/FileNet -v /home/cpe_data/configDropins/overrides:/opt/ibm/wlp/usr/servers/defaultServer/configDropins/overrides -v /home/cpe_data/bootstrap:/opt/ibm/wlp/usr/servers/defaultServer/lib/bootstrap ecmcontainers/ecm_earlyadopters_cpe:earlyadopters-gm5.5
 ```
 
 ## Run the IBM Content Platform Engine on Kubernetes.  
