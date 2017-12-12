@@ -253,7 +253,7 @@ docker run -d -e MON_METRICS_WRITER_OPTION=2 -e MON_METRICS_SERVICE_ENDPOINT=met
 
 Refer to [kubernetes document](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) for information on persistence volume preparation.
 
-2. Create a persistence volume claim ([sample YAML file for create PVC](https://github.ibm.com/ecm-container-service/navigator-docker/tree/master/examples/ecmcfgstore.yml)):
+2. Create a persistence volume claim ([sample YAML file for create PVC](https://github.com/ibm-ecm/container-cpe/blob/master/examples/ecmcfgstore.yaml)):
 ```
 kubectl apply ecmcfgstore.yml
 ```
@@ -293,7 +293,7 @@ kubectl describe pv <PV_NAME>
 ```
 - Follow section 2.6 to generate the props.jar and copy it into /cfgstore/cpe/bootstrap folder.Follow section 2.7 copy the configuration files that you generated, the JBDC driver, and the JBDC license into the `/cfgstore/cpe/configDropins/overrides` folder.
 
-4. Deploy IBM Content Platform Engine ([sample YAML file for deploy CPE](https://github.ibm.com/ecm-container-service/cpe-docker/tree/master/examples/cpe-deploy.yaml)).
+4. Deploy IBM Content Platform Engine ([sample YAML file for deploy CPE](https://github.com/ibm-ecm/container-cpe/blob/master/examples/cpe-deploy.yaml)).
 
 ```
 kubectl create -f cpe-deploy.yaml
