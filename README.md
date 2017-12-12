@@ -180,7 +180,7 @@ Validate your files:
 
 Use the following Docker commands with your credentials to log in and pull the Docker image:
 - ```docker login -u mydockerid -p mydockerpw```
-- ```docker pull ibmcorp/filenet_content_platform_engine:earlyadopters-gm5.5```
+- ```docker pull ibmcorp/ecm_earlyadopters_cpe:earlyadopters-gm5.5```
 
 ## 2. Set the environment variables (optional)
 These optional variables can be set on your Docker container. You can pass these to the container when you run the image by using additional ```-e FLAG=value``` arguments.
