@@ -253,9 +253,17 @@ docker run -d -e MON_METRICS_WRITER_OPTION=2 -e MON_METRICS_SERVICE_ENDPOINT=met
 
 Refer to [kubernetes document](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) for information on persistence volume preparation.
 
-2. Create a persistence volume claim ([sample YAML file for create PVC](https://github.com/ibm-ecm/container-cpe/blob/master/examples/ecmcfgstore.yaml%20)):
+2. Create persistence volume claim 
+- XML configuration file for Db2 JDBC Driver ([ecmcfgstore.yml
+](https://github.com/ibm-ecm/container-cpe/blob/master/examples/ecmcfgstore.yaml%20))<br>
+- XML configuration file for Db2 JDBC Driver ([ecmcontentstore.yml
+](https://github.com/ibm-ecm/container-cpe/blob/master/examples/ecmcontentstore.yml))<br>
+- XML configuration file for Db2 JDBC Driver ([ecmindexstore.yml
+](https://github.com/ibm-ecm/container-cpe/blob/master/examples/ecmindexstore.yml))<br>
 ```
 kubectl apply ecmcfgstore.yml
+kubectl apply ecmcontentstore.yml
+kubectl apply ecmindexstore.yml
 ```
 Use the following command to check persistence volume information:
 ```
@@ -267,6 +275,12 @@ You can use the command to bind the persistence volume name to this persistence 
 - Mount the configuration storage on the Kubernetes client:
 ```
 mkdir /cfgstore
+mount -t nfs4 -o hard,intr <PV_HOST>:/<PV_FOLDER> /cfgstore
+
+mkdir /filestore
+mount -t nfs4 -o hard,intr <PV_HOST>:/<PV_FOLDER> /cfgstore
+
+mkdir /indexstore
 mount -t nfs4 -o hard,intr <PV_HOST>:/<PV_FOLDER> /cfgstore
 ```
 Where PV_HOST is the server name of the persistence volume, and PV_FOLDER is the path for the persistence volume. You can check these values by running the following command:
@@ -289,6 +303,8 @@ kubectl describe pv <PV_NAME>
     /cfgstore/cpe/icmrules
 
     /cfgstore/cpe/bootstrap
+
+    /filestore/OS1_storageArea1
 
 ```
 - Follow section 2.6 to generate the props.jar and copy it into /cfgstore/cpe/bootstrap folder.Follow section 2.7 copy the configuration files that you generated, the JBDC driver, and the JBDC license into the `/cfgstore/cpe/configDropins/overrides` folder.
