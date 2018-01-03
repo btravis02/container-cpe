@@ -48,6 +48,8 @@ Collect the following configuration files for your container environment:
 - JAR file for building bootstrap properties (1 of 2) ([BootstrapConfig.jar](https://github.com/ibm-ecm/container-cpe/blob/master/examples/BootstrapConfig.jar))
 - JAR file for building bootstrap properties (2 of 2) ([BootstrapConfigProps.jar](https://github.com/ibm-ecm/container-cpe/blob/master/examples/BootstrapConfigProps.jar))
 
+Note that you can rename the above Liberty configuration XML files to something else or leave as it is.
+
 #### 2.2 Create the LDAP configuration.
 - Modify the ldapAD.xml file to reflect your LDAP configuration. The example configuration is for Microsoft Active Directory. At minimum, update the following values:
   - host: LDAP host
@@ -98,7 +100,7 @@ Container folder | Host directory example | Description
 
 #### 2.6 Generate the bootstrap properties.
 A bootstrap JAR file is generated so that the Content Platform Engine container can start correctly. This file contains login and GCD info that mimics the information that you set up during section 2.2 and 2.3.<br>
-Ensure you are in the same directory as the `BootstrapConfig.jar` and `BootstrapConfigProps.jar` files that you downloaded in step 2.1. Replace the following values in this command to match your configuration:<br>
+Ensure you are in the same directory as the `BootstrapConfig.jar` and `BootstrapConfigProps.jar` files that you downloaded in step 2.1. Additionally, if you don't have JAVA executable in your path that you will need to that you will need to use the full path for where the java command reside when executing the commands in this step. Replace the following values in this command to match your configuration:<br>
 
 - GCDDS: The jndiName that you used for the non-XA GCD data source in FNGCDDS.xml
 - GCDDSXA: The jndiName that you used for the XA GCD data source in FNGCDDS.xml
