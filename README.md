@@ -237,7 +237,7 @@ The following command, which uses sample values, runs the Content Platform Engin
 docker run -d --name cpe -p 9080:9080 -p 9443:9443 --hostname=hikes1 -v /home/cpe_data/asa:/opt/ibm/asa -v /tmp/data/textext:/opt/ibm/textext -v /home/cpe_data/icmrules:/opt/ibm/icmrules -v /home/cpe_data/logs:/opt/ibm/wlp/usr/servers/defaultServer/logs -v /home/cpe_data/FileNet:/opt/ibm/wlp/usr/servers/defaultServer/FileNet -v /home/cpe_data/configDropins/overrides:/opt/ibm/wlp/usr/servers/defaultServer/configDropins/overrides -v /home/cpe_data/bootstrap:/opt/ibm/wlp/usr/servers/defaultServer/lib/bootstrap ecmcontainers/ecm_earlyadopters_cpe:earlyadopters-gm5.5
 ```
 
-Verify the Content Platform Engine deployment http://your-host-ip:9080/cpe or https://your-host-ip:9443/cpe 
+Verify the Content Platform Engine deployment http://your-host-ip:9080/acce or https://your-host-ip:9443/acce 
 
 # Usage
 
