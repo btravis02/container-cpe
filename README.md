@@ -114,7 +114,7 @@ Ensure you are in the same directory as the `BootstrapConfig.jar` and `Bootstrap
 With the example values, the command looks like this:
 
 ```
-[root@docker_host:/tmp/cpeFiles]# java -Dfile.encoding=utf-8 -jar BootstrapConfig.jar -s FNGCDDS -x FNGCDDS -u P8Admin -p IBMFileNetP8 -e BootstrapConfigProps.jar -b 256 -c AES -k -o true
+[root@docker_host:/tmp/cpeFiles]# java -Dfile.encoding=utf-8 -jar BootstrapConfig.jar -s FNGCDDS -x FNGCDXA -u P8Admin -p IBMFileNetP8 -e BootstrapConfigProps.jar -b 256 -c AES -k -o true
 ```
 
 This command modifies BootstrapConfigProps.jar with your information. Then you must extract the updated props.jar file from BootstrapConfigProps.jar:
