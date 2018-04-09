@@ -228,13 +228,13 @@ These optional variables can be set on your Docker container. You can pass these
     <td>GCDJNDINAME</td>
     <td>The jndiName that you used for the non-XA GCD data source in FNGCDDS.xml</td>
     <td>YES</td>
-    <td>1</td>
+    <td>FNGCDDS</td>
   </tr>
   <tr>
     <td>GCDJNDIXANAME</td>
     <td>The jndiName that you used for the XA GCD data source in FNGCDDS.xml</td>
     <td>YES</td>
-    <td>1</td>
+    <td>FNGCDDSXA</td>
   </tr>
   </table>
 
