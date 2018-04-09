@@ -184,7 +184,7 @@ Use the following Docker commands with your credentials to log in and pull the D
 - ```docker login -u mydockerid -p mydockerpw```
 - ```docker pull ecmcontainers/ecm_earlyadopters_cpe:earlyadopters-gm5.5```
 
-## 2. Set the environment variables (optional)
+## 2. Set the environment variables
 These optional variables can be set on your Docker container. You can pass these to the container when you run the image by using additional ```-e FLAG=value``` arguments.
 
 <table style="width:100%">
@@ -224,6 +224,18 @@ These optional variables can be set on your Docker container. You can pass these
     <td>NO</td>
     <td>false</td>
   </tr>
+  <tr>
+    <td>GCDJNDINAME</td>
+    <td>The jndiName that you used for the non-XA GCD data source in FNGCDDS.xml</td>
+    <td>YES</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>GCDJNDIXANAME</td>
+    <td>The jndiName that you used for the XA GCD data source in FNGCDDS.xml</td>
+    <td>YES</td>
+    <td>1</td>
+  </tr>
   </table>
 
 For monitoring environment variables, check [ECM Monitoring Github](https://github.com/ibm-ecm/container-monitoring).
@@ -246,7 +258,7 @@ Verify the Content Platform Engine deployment http://your-host-ip:9080/acce or h
 New CPE 5.5.1 builds implement new bootstrap, you will no longer need to manually run the bootstrap process using the BootstrapConfigProps.jar.
 
 ```
-docker run -d --name cpe -p 9080:9080 -p 9443:9443  --hostname=cpe-mon1 -e GCDJNDINAME=test1 -e GCDJNDIXANAME=test2 -v /home/cpe_data/bootstrap:/opt/ibm/wlp/usr/servers/defaultServer/lib/bootstrap -v /home/cpe_data/asa:/opt/ibm/asa -v /home/cpe_data/textext:/opt/ibm/textext -v /home/cpe_data/icmrules:/opt/ibm/icmrules -v /home/cpe_data/logs:/opt/ibm/wlp/usr/servers/defaultServer/logs -v /home/cpe_data/FileNet:/opt/ibm/wlp/usr/servers/defaultServer/FileNet -v /home/cpe_data/configDropins/overrides:/opt/ibm/wlp/usr/servers/defaultServer/configDropins/overrides ecm-containerization-docker-local.artifactory.swg-devops.com/cpe:v2-dap551.856-new-bootstrap-cpe551
+docker run -d --name cpe -p 9080:9080 -p 9443:9443  --hostname=cpe-mon1 -e GCDJNDINAME=<GCD datasource JNDI> -e GCDJNDIXANAME=<GCD XA datasource JNDI> -v /home/cpe_data/bootstrap:/opt/ibm/wlp/usr/servers/defaultServer/lib/bootstrap -v /home/cpe_data/asa:/opt/ibm/asa -v /home/cpe_data/textext:/opt/ibm/textext -v /home/cpe_data/icmrules:/opt/ibm/icmrules -v /home/cpe_data/logs:/opt/ibm/wlp/usr/servers/defaultServer/logs -v /home/cpe_data/FileNet:/opt/ibm/wlp/usr/servers/defaultServer/FileNet -v /home/cpe_data/configDropins/overrides:/opt/ibm/wlp/usr/servers/defaultServer/configDropins/overrides ecm-containerization-docker-local.artifactory.swg-devops.com/cpe:v2-dap551.856-new-bootstrap-cpe551
 ```
 
 ## Run CPE container with monitoring
