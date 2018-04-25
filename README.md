@@ -97,40 +97,7 @@ Container folder | Host directory example | Description
 [root@docker_host:/]# mkdir -p /home/cpe_data/configDropins/overrides /home/cpe_data/asa /home/cpe_data/textext /home/cpe_data/logs /home/cpe_data/FileNet /home/cpe_data/icmrules /home/cpe_data/bootstrap
 ```
 
-
-#### 2.6 Generate the bootstrap properties.
-A bootstrap JAR file is generated so that the Content Platform Engine container can start correctly. This file contains login and GCD info that mimics the information that you set up during section 2.2 and 2.3.<br>
-Ensure you are in the same directory as the `BootstrapConfig.jar` and `BootstrapConfigProps.jar` files that you downloaded in step 2.1. Additionally, if you don't have JAVA executable in your path that you will need to that you will need to use the full path for where the java command reside when executing the commands in this step. Replace the following values in this command to match your configuration:<br>
-
-- GCDDS: The jndiName that you used for the non-XA GCD data source in FNGCDDS.xml
-- GCDDSXA: The jndiName that you used for the XA GCD data source in FNGCDDS.xml
-- bootstrap-user: The short username that you used for bindDN in ldap.xml
-- bootstrap-user-password: The password that you used for bindPassword in ldap.xml
-
-```
-[root@docker_host:/tmp/cpeFiles]# java -Dfile.encoding=utf-8 -jar BootstrapConfig.jar -s <GCDDS> -x <GCDDSXA> -u <bootstrap-user> -p <bootstrap-user-password> -e BootstrapConfigProps.jar -b 256 -c AES -k -o true
-```
-
-With the example values, the command looks like this:
-
-```
-[root@docker_host:/tmp/cpeFiles]# java -Dfile.encoding=utf-8 -jar BootstrapConfig.jar -s FNGCDDS -x FNGCDXA -u P8Admin -p IBMFileNetP8 -e BootstrapConfigProps.jar -b 256 -c AES -k -o true
-```
-
-This command modifies BootstrapConfigProps.jar with your information. Then you must extract the updated props.jar file from BootstrapConfigProps.jar:
-
-```
-[root@docker_host:/tmp/cpeFiles]# jar xvf BootstrapConfigProps.jar APP-INF/lib/props.jar
-```
-
-This command extracts APP-INF/lib/props.jar to the current directory. Copy the props.jar file to the bootstrap host directory that you created in section 2.1:
-
-```
-[root@docker_host:/tmp/cpeFiles]# cp APP-INF/lib/props.jar /home/cpe_data/bootstrap/
-```
-
-
-#### 2.7 Copy configuration files to host directory and set security.
+#### 2.6 Copy configuration files to host directory and set security.
 
 Copy the configuration files that you generated, the JBDC driver, and the JBDC license into the `/home/cpe_data/configDropins/overrides` host directory.<br><br>If you changed the base directory earlier in this step, use that instead of /home/cpe_data in the following examples.
 
@@ -253,9 +220,9 @@ Verify the Content Platform Engine deployment http://your-host-ip:9080/acce or h
 
 # Usage
 
-## Run CPE container with new bootstrap for CPE 5.5.1
+## Run CPE container with new bootstrap
 
-New CPE 5.5.1 builds implement new bootstrap, you will no longer need to manually run the bootstrap process using the BootstrapConfigProps.jar.It means you can skip section 2.6 only add two environment variables (GCDJNDINAME,GCDJNDIXANAME)in docker run command.
+New CPE 5.5.1 builds implement new bootstrap, you will no longer need to manually run the bootstrap process using the BootstrapConfigProps.jar.You need add two environment variables `GCDJNDINAME`,`GCDJNDIXANAME`in docker run command.For the detail information about the two bootsrap variables you can see the section 2 in Quickstart.
 
 ```
 docker run -d --name cpe -p 9080:9080 -p 9443:9443  --hostname=cpe-mon1 -e GCDJNDINAME=<GCD datasource JNDI> -e GCDJNDIXANAME=<GCD XA datasource JNDI> -v /home/cpe_data/bootstrap:/opt/ibm/wlp/usr/servers/defaultServer/lib/bootstrap -v /home/cpe_data/asa:/opt/ibm/asa -v /home/cpe_data/textext:/opt/ibm/textext -v /home/cpe_data/icmrules:/opt/ibm/icmrules -v /home/cpe_data/logs:/opt/ibm/wlp/usr/servers/defaultServer/logs -v /home/cpe_data/FileNet:/opt/ibm/wlp/usr/servers/defaultServer/FileNet -v /home/cpe_data/configDropins/overrides:/opt/ibm/wlp/usr/servers/defaultServer/configDropins/overrides ecm-containerization-docker-local.artifactory.swg-devops.com/cpe:v12-dap551.856-new-bootstrap-cpe551
