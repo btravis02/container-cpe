@@ -97,10 +97,6 @@ Container folder | Host directory example | Description
 [root@docker_host:/]# mkdir -p /home/cpe_data/configDropins/overrides /home/cpe_data/asa /home/cpe_data/textext /home/cpe_data/logs /home/cpe_data/FileNet /home/cpe_data/icmrules /home/cpe_data/bootstrap
 ```
 
-<<<<<<< HEAD
-#### 2.6 Copy configuration files to host directory and set security.
-=======
-
 #### 2.6 Generate the bootstrap properties.
 A bootstrap JAR file is generated so that the Content Platform Engine container can start correctly. This file contains login and GCD info that mimics the information that you set up during section 2.2 and 2.3.<br>
 Ensure you are in the same directory as the `BootstrapConfig.jar` and `BootstrapConfigProps.jar` files that you downloaded in step 2.1. Additionally, if you don't have JAVA executable in your path that you will need to that you will need to use the full path for where the java command reside when executing the commands in this step. Replace the following values in this command to match your configuration:<br>
