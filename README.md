@@ -130,7 +130,7 @@ This command extracts APP-INF/lib/props.jar to the current directory. Copy the p
 
 
 #### 2.7 Copy configuration files to host directory and set security.
->>>>>>> parent of a8ed3b0... Update README.md
+
 
 Copy the configuration files that you generated, the JBDC driver, and the JBDC license into the `/home/cpe_data/configDropins/overrides` host directory.<br><br>If you changed the base directory earlier in this step, use that instead of /home/cpe_data in the following examples.
 
